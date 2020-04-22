@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<body bgcolor="#E6E6FA">
+
+<h1 id="headerOutline">RAYAAN'S GRADE CALCULATOR</h1>
+
+<p1 id="directionHelp">Enter your grades(as percentages) and weights. Then, press the Calculate button!</p1>
+
+
+<input class="calcB" type = "button" onclick = "calculatePercent()" value = "CALCULATE">
+
+<p2 id = "percenttag"><u>Percentages</u></p2>
+
+
+
+<p3 id = "weighttag"><u>Weights</u></p3>
+
+
+<p4 id = "actualGradeTag"><b>Grade:</b></p4>
+
+<input id="grade1" type="text" value="" onkeydown="">
+<input id="grade2" type="text" value="" onkeydown="">
+<input id="grade3" type="text" value="" onkeydown="">
+<input id="grade4" type="text" value="" onkeydown="">
+<input id="grade5" type="text" value="" onkeydown="">
+<input id="grade6" type="text" value="" onkeydown="">
+<input id="grade7" type="text" value="" onkeydown="">
+<input id="grade8" type="text" value="" onkeydown="">
+<input id="grade9" type="text" value="" onkeydown="">
+<input id="grade10" type="text" value="" onkeydown="">
+<input id="grade11" type="text" value="" onkeydown="">
+<input id="grade12" type="text" value="" onkeydown="">
+<input id="grade13" type="text" value="" onkeydown="">
+<input id="grade14" type="text" value="" onkeydown="">
+<input id="grade15" type="text" value="" onkeydown="">
+
+
+<input id="weight1" type="text" value="" onkeydown="">
+<input id="weight2" type="text" value="" onkeydown="">
+<input id="weight3" type="text" value="" onkeydown="">
+<input id="weight4" type="text" value="" onkeydown="">
+<input id="weight5" type="text" value="" onkeydown="">
+<input id="weight6" type="text" value="" onkeydown="">
+<input id="weight7" type="text" value="" onkeydown="">
+<input id="weight8" type="text" value="" onkeydown="">
+<input id="weight9" type="text" value="" onkeydown="">
+<input id="weight10" type="text" value="" onkeydown="">
+<input id="weight11" type="text" value="" onkeydown="">
+<input id="weight12" type="text" value="" onkeydown="">
+<input id="weight13" type="text" value="" onkeydown="">
+<input id="weight14" type="text" value="" onkeydown="">
+<input id="weight15" type="text" value="" onkeydown="">
+
+
+
+</head>
+<body>
+
+<style>
+    #headerOutline{
+        text-align:center;
+        font-size: 65px;
+        color: darkblue;
+    }
+    #grade1{
+        position: absolute;
+        left: 400px;
+        top: 255px;
+    }
+    #grade2{
+        position: absolute;
+        left: 400px;
+        top: 290px;
+    }
+    #grade3{
+        position: absolute;
+        left: 400px;
+        top: 325px;
+    }
+    #grade4{
+        position: absolute;
+        left: 400px;
+        top: 360px;
+    }
+    #grade5{
+        position: absolute;
+        left: 400px;
+        top: 395px;
+    }
+    #grade6{
+        position: absolute;
+        left: 400px;
+        top: 430px;
+    }
+    #grade7{
+        position: absolute;
+        left: 400px;
+        top: 465px;
+    }
+    #grade8{
+        position: absolute;
+        left: 400px;
+        top: 500px;
+    }
+    #grade9{
+        position: absolute;
+        left: 400px;
+        top: 535px;
+    }
+    #grade10{
+        position: absolute;
+        left: 400px;
+        top: 570px;
+    }
+    #grade11{
+        position: absolute;
+        left: 400px;
+        top: 605px;
+    }
+    #grade12{
+        position: absolute;
+        left: 400px;
+        top: 640px;
+    }
+    #grade13{
+        position: absolute;
+        left: 400px;
+        top: 675px;
+    }
+    #grade14{
+        position: absolute;
+        left: 400px;
+        top: 710px;
+    }
+    #grade15{
+        position: absolute;
+        left: 400px;
+        top: 745px;
+    }
+
+
+
+
+
+
+    #weight1{
+        position: absolute;
+        left: 700px;
+        top: 255px;
+    }
+    #weight2{
+        position: absolute;
+        left: 700px;
+        top: 290px;
+    }
+    #weight3{
+        position: absolute;
+        left: 700px;
+        top: 325px;
+    }
+    #weight4{
+        position: absolute;
+        left: 700px;
+        top: 360px;
+    }
+    #weight5{
+        position: absolute;
+        left: 700px;
+        top: 395px;
+    }
+    #weight6{
+        position: absolute;
+        left: 700px;
+        top: 430px;
+    }
+    #weight7{
+        position: absolute;
+        left: 700px;
+        top: 465px;
+    }
+    #weight8{
+        position: absolute;
+        left: 700px;
+        top: 500px;
+    }
+    #weight9{
+        position: absolute;
+        left: 700px;
+        top: 535px;
+    }
+    #weight10{
+        position: absolute;
+        left: 700px;
+        top: 570px;
+    }
+    #weight11{
+        position: absolute;
+        left: 700px;
+        top: 605px;
+    }
+    #weight12{
+        position: absolute;
+        left: 700px;
+        top: 640px;
+    }
+    #weight13{
+        position: absolute;
+        left: 700px;
+        top: 675px;
+    }
+    #weight14{
+        position: absolute;
+        left: 700px;
+        top: 710px;
+    }
+    #weight15{
+        position: absolute;
+        left: 700px;
+        top: 745px;
+    }
+
+
+
+    #directionHelp{
+        position: absolute;
+        left: 250px;
+        top: 150px;
+        font-size: 23px;
+
+    }
+    #percenttag{
+        position: absolute;
+        left: 430px;
+        top: 225px;
+        font-size: 20px;
+    }
+
+    #weighttag{
+        position: absolute;
+        left: 740px;
+        top: 225px;
+        font-size: 20px;
+    }
+    #actualGradeTag{
+        position: absolute;
+        left: 1000px;
+        top: 225px;
+        font-size: 25px;
+    }
+
+    .calcB {
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 26px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+
+        position: absolute;
+        left: 525px;
+        top: 825px;
+    }
+
+    .calcB:hover {background-color: #3e8e41}
+
+    .calcB:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+
+</style>
+
+<script>
+
+    var percentagesTotalArray = [];
+
+    var weightsTotalArray = [];
+
+    var multiplicateSumsArray = [];
+
+    function calculatePercent(){
+        //final = (w*p + (w*p))/(p+p) = num/(w+p)
+        //for loop to iterate through
+
+        for(var x = 1;x<16;x++){
+            // percentagesTotalArray
+            var whichID = "grade" + x;
+            var whichWeightID = "weight" + x;
+            var userPercent = document.getElementById(whichID).value;
+            var userWeight = document.getElementById(whichWeightID).value;
+            if(userPercent!==""){
+                percentagesTotalArray.push(userPercent);
+            }
+            if(userWeight!==""){
+                weightsTotalArray.push(userWeight);
+            }
+        }
+
+        var sumOfWeights = 0;
+        for(var y=0;y<percentagesTotalArray.length;y++){
+            var productOfWeightPercent = percentagesTotalArray[y] * weightsTotalArray[y];
+            sumOfWeights+= parseInt(weightsTotalArray[y],10);
+            multiplicateSumsArray.push(productOfWeightPercent);
+        }
+
+
+        var sumofProducts = 0;
+        for(var z=0;z<multiplicateSumsArray.length;z++){
+            sumofProducts+= multiplicateSumsArray[z];
+        }
+
+        var finalPercent = sumofProducts/sumOfWeights;
+
+        var actualFinal = Math.max( Math.round(finalPercent * 10) / 10, 2.8 ).toFixed(2);
+        document.getElementById("actualGradeTag").innerHTML = "Grade: " + actualFinal + "%";
+
+        alert("You currently have a: " + actualFinal + "%")
+
+
+    }
+</script>
+
+</body>
+</html>
