@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Avalanche</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!--
+
+Matter.js - Avalanche Example
+http://brm.io/matter-js/
+
+-->
+<!-- partial -->
+<script src='https://cdn.rawgit.com/liabru/matter-js/d727e8601e689a3aeffd386d6ede3a16243563da/build/matter.js'></script>
+<script src='https://cdn.rawgit.com/liabru/matter-tools/d31e212a046b3f8279124aaa43589d27c20d261d/build/matter-tools.demo.js'></script>
+<script src='https://cdn.rawgit.com/liabru/matter-wrap/81b2adf1bb970245f5d964ddda0db71c1ff8aa43/build/matter-wrap.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
+
+<script>
+    // Matter.js - http://brm.io/matter-js/
+
+    var Example = Example || {};
+    var dominoesPlaced = 0;
+    Matter.use(
+        'matter-wrap'
+    );
+    var stack;
+    var ball;
+    var ball2;
+    var constraint;
+    var Engine;
+
+    Example.avalanche = function() {
+        window.setTimeout(checkCut, 1000);
+        Engine = Matter.Engine,
+            Render = Matter.Render,
+            Runner = Matter.Runner,
+            Render = Matter.Render,
+            Runner = Matter.Runner,
+            Body = Matter.Body,
+            Composites = Matter.Composites,
+            MouseConstraint = Matter.MouseConstraint,
+            Mouse = Matter.Mouse,
+            Composite = Matter.Composite,
+            Composites = Matter.Composites,
+            Common = Matter.Common,
+            Constraint = Matter.Constraint,
+            MouseConstraint = Matter.MouseConstraint,
+            Mouse = Matter.Mouse,
+            World = Matter.World,
+            all =         Bodies = Matter.Bodies;
+
+        // create engine
+        var engine = Engine.create(),
+            world = engine.world;
+
+        // create renderer
+        var render = Render.create({
+            element: document.body,
+            engine: engine,
+            options: {
+                width: 4000,
+                height: 1200,
+                wireframes: false
+            }
+        });
+
+        Render.run(render);
+
+        // create runner
+        var runner = Runner.create();
+        Runner.run(runner, engine);
+
+        // add bodies
+        // stack = Composites.stack(20, 20, 1, 1, 0, 0, function(x, y) {
+        //     return Bodies.circle(x, y, Common.random(20, 20), { friction: 0.00001, restitution: 0.5, density: 0.001});
+        // });
+        ball = Matter.Bodies.circle(-1940, 20, Common.random(18, 18), {
+            friction: 0.0000001, restitution: 0.7, density: 0.001
+        });
+        ball2 = Matter.Bodies.circle(-1749, 500, Common.random(10, 10), {
+            friction: 0.000001, restitution: 0.7, density: 0.001
+        });
+        Main();
+
+
+
+        World.add(world, ball);
+        World.add(world, ball2);
+        // engine.world.gravity.y = -2;
+        World.add(world, [
+            Bodies.rectangle(-1990, 50, 250, 16, { isStatic: true, angle: Math.PI * 0.06 }),
+            Bodies.rectangle(-1820, 130, 250, 16, { isStatic: true, angle: -Math.PI * 0.06 }),
+            Bodies.rectangle(-1990, 200, 250, 16, { isStatic: true, angle: Math.PI * 0.06 }),
+
+            Bodies.rectangle(-1810, 350, 450, 16, { isStatic: true, angle: -Math.PI * 0.06 }),
+
+            Bodies.rectangle(-2100, 450, 140, 20, { isStatic: true, angle: Math.PI * 0.5 }),
+
+
+            Bodies.rectangle(-960, 250, 160, 17, { isStatic: true, angle: Math.PI * 0.25 }),
+            Bodies.rectangle(-908, 360, 130, 15, { isStatic: true, angle: Math.PI * 0.5 }),
+
+            Bodies.rectangle(-756, 250, 160, 17, { isStatic: true, angle: -Math.PI * 0.25 }),
+            Bodies.rectangle(-808, 360, 130, 15, { isStatic: true, angle: Math.PI * 0.5 }),
+
+            //ne
+            Bodies.rectangle(-1060, 250, 260, 17, { isStatic: true, angle: Math.PI * 0.25 }),
+            Bodies.rectangle(-970, 450, 230, 15, { isStatic: true, angle: Math.PI * 0.5 }),
+
+            Bodies.rectangle(-656, 250, 260, 17, { isStatic: true, angle: -Math.PI * 0.25 }),
+            Bodies.rectangle(-746, 450, 230, 15, { isStatic: true, angle: Math.PI * 0.5 }),
+
+
+            // Bodies.rectangle(-852, 558, 222, 14, { isStatic: true, angle: 0}),
+
+            Bodies.rectangle(-1445, 600, 180, 16, { isStatic: true, angle: Math.PI * 0.14 }),
+
+            Bodies.rectangle(-1200, 40, 350, 16, { isStatic: true, angle: -Math.PI * 0.19 }),
+
+            Bodies.rectangle(-1275, 640, 180, 16, { isStatic: true, angle: 0 }),
+
+            Bodies.rectangle(-187, 570, 520, 16, { isStatic: true, angle: Math.PI * 0.08 }),
+            Bodies.rectangle(-350, 300, 500, 16, { isStatic: true, angle: -Math.PI * 0.19 }),
+
+            Bodies.rectangle(-693, 660, 110, 15, { isStatic: true, angle: Math.PI * 0.17}),
+
+            //p
+            Bodies.rectangle(-940, 670, 300, 15, { isStatic: true, angle: Math.PI * 0.17}),
+            Bodies.rectangle(-625, 742, 400, 15, { isStatic: true, angle: 0}),
+
+            Bodies.rectangle(-1820, 530, 560, 20, { isStatic: true, angle: 0}),
+
+            Bodies.rectangle(255, 720, 325, 20, { isStatic: true, angle: 0}),
+
+            Bodies.rectangle(90, 720, 60, 20, { isStatic: true, angle: Math.PI * 0.5}),
+
+            Bodies.rectangle(420, 720, 60, 20, { isStatic: true, angle: Math.PI * 0.5})
+
+            // Bodies.rectangle(-858, 415, 86, 20, { isStatic: true, angle: 0})
+
+
+            //funnel below
+
+
+
+        ]);
+
+
+        var catapult = Bodies.rectangle(-860, 300, 70, 15);
+
+        World.add(world, [
+            catapult, Constraint.create({ bodyA: catapult, pointB: { x: -860, y: 300 }, stiffness: 2 })
+        ]);
+
+        var catapult2 = Bodies.rectangle(-858, 460, 95, 15);
+
+        World.add(world, [
+            catapult2, Constraint.create({ bodyA: catapult2, pointB: { x: -858, y: 460 }, stiffness: 2 })
+        ]);
+
+        var catapult3 = Bodies.rectangle(-858, 600, 225, 15);
+
+        World.add(world, [
+            catapult3, Constraint.create({ bodyA: catapult3, pointB: { x: -858, y: 600 }, stiffness: 2 })
+        ]);
+
+
+        //World.add(world, Bodies.rectangle(70, 560, 30, 12, { isStatic: false, angle: Math.PI * 0.5 }))
+        var dominoStack = Composites.stack(-2020, 440, 9, 1, 11, 0, function(x, y) {
+            return Bodies.rectangle(x, y, 80, 10, { isStatic: false, angle: Math.PI * 0.5});
+        });
+
+        World.add(world, dominoStack);
+
+        // var dominoStack = Composites.stack(-920, 540, 9, 1, 11, 0, function(x, y) {
+        //     return Bodies.rectangle(x, y, 80, 10, { isStatic: false, angle: Math.PI * 0.5});
+        // });
+        //
+        // World.add(world, dominoStack);
+
+        var cradle = Composites.newtonsCradle(40, 250, 5, 30, 200);
+
+        cradle = Composites.newtonsCradle(140, 510, 7, 20, 140);
+        World.add(world, cradle);
+        // Body.translate(cradle.bodies[0], { x: -140, y: -100 });
+
+        // var body = Bodies.polygon(400, 100, 4, 30);
+        // constraint = Constraint.create({
+        //     pointA: { x: 400, y: 120 },
+        //     bodyB: body,
+        //     pointB: { x: -10, y: -10 },
+        //     stiffness: 0.001,
+        //     damping: 0.05
+        // });
+        //
+        // World.add(world, [body, constraint]);
+        // add mouse control
+        var mouse = Mouse.create(render.canvas),
+            mouseConstraint = MouseConstraint.create(engine, {
+                mouse: mouse,
+                constraint: {
+                    stiffness: 0.2,
+                    render: {
+                        visible: false
+                    }
+                }
+            });
+
+        World.add(world, mouseConstraint);
+
+        // keep the mouse in sync with rendering
+        render.mouse = mouse;
+
+        // fit the render viewport to the scene
+        Render.lookAt(render, Composite.allBodies(world));
+
+        // wrapping using matter-wrap plugin
+        // for (var i = 0; i < stack.bodies.length; i += 1) {
+        //     stack.bodies[i].plugin.wrap = {
+        //         min: { x: render.bounds.min.x, y: render.bounds.min.y },
+        //         max: { x: render.bounds.max.x, y: render.bounds.max.y }
+        //     };
+        // }
+
+        // context for MatterTools.Demo
+        return {
+            engine: engine,
+            runner: runner,
+            render: render,
+            canvas: render.canvas,
+            stop: function() {
+                Matter.Render.stop(render);
+                Matter.Runner.stop(runner);
+            }
+        };
+    };
+
+
+    var update_loop = setInterval(Main, 100);
+
+
+    function Main(){
+        if(ball2.position.x > -1375 && ball2.position.x < -1177 && ball2.position.y > 600 && ball2.position.y < 740){
+            ball2.restitution = 15.0;
+        }
+        else if(ball2.position.x > -550 && ball2.position.x < -500){
+            ball2.restitution = 7.0;
+        }
+        else{
+            ball2.restitution = 0.7;
+        }
+
+    }
+    // create demo interface
+    // not required to use Matter.js
+
+    MatterTools.Demo.create({
+        toolbar: {
+
+        },
+        examples: [
+            {
+                init: Example.avalanche
+            }
+        ]
+    });
+
+    (function run() {
+        window.requestAnimationFrame(run);
+        Engine.update(engine, 1000 / 60);
+    })();
+
+    function checkCut() {
+        if (ball != null) {
+
+        }
+        setTimeout(checkCut(), 1000);
+    }
+
+    document.onkeydown = checkKey;
+
+    function checkKey(e) {
+
+        e = e || window.event;
+
+        if (e.keyCode == '13') {
+            //enter key
+            //alert();
+            constraint.bodyB = null;
+            constraint.render.visible = false;
+        }
+        if (e.keyCode == '38') {
+            alert();
+            // up arrow
+            alert(ball.position.x);
+        }
+        else if (e.keyCode == '40') {
+            // down arrow
+        }
+        else if (e.keyCode == '37') {
+            // left arrow
+        }
+        else if (e.keyCode == '39') {
+            // right arrow
+        }
+
+    }
+
+</script>
